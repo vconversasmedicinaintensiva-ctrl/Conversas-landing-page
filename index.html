@@ -159,16 +159,17 @@ margin:0;
 display:block;
 position:relative;
 }
-.hero-image figcaption{
-margin-top:16px;
-text-align:center;
-font-family:Jost,sans-serif;
-font-size:.85rem;
-letter-spacing:.04em;
+.hero-image a,
+.programa-img a{
+cursor:zoom-in;
 }
-.hero-image figcaption a{
-color:var(--gold-text);
-border-bottom:1px solid rgba(179,139,77,.4);
+.hero-image a img,
+.programa-img a img{
+transition:opacity .2s ease;
+}
+.hero-image a:hover img,
+.programa-img a:hover img{
+opacity:.92;
 }
 .hero-image img{
 border-radius:24px;
@@ -242,34 +243,38 @@ transform:translateY(-2px);
 }
 .temas{
 background:white;
+padding:54px 0;
 }
 .temas h2{
 text-align:center;
-font-size:2.4rem;
-margin-bottom:60px;
-color:var(--green);
+font-family:Jost,sans-serif;
+font-size:.78rem;
+font-weight:600;
+letter-spacing:.22em;
+text-transform:uppercase;
+color:var(--muted);
+margin-bottom:26px;
 }
 .temas ul{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:24px;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:12px;
 list-style:none;
 }
 .temas li{
 background:var(--cream);
-padding:35px;
-border-radius:12px;
+padding:16px 12px;
+border-radius:10px;
 font-family:Jost;
 text-transform:uppercase;
-font-size:.95rem;
-letter-spacing:.08em;
+letter-spacing:.06em;
 text-align:center;
 transition:.25s;
 border:1px solid #eee;
 }
 .temas li:hover{
 background:white;
-transform:translateY(-5px);
+transform:translateY(-3px);
 box-shadow:var(--shadow);
 }
 footer{
@@ -292,6 +297,7 @@ margin-top:25px;
 .sponsors{
 padding:90px 0;
 background:var(--cream);
+border-top:1px solid rgba(179,139,77,.18);
 }
 .sponsors h2{
 font-size:2.3rem;
@@ -328,8 +334,9 @@ object-fit:contain;
 .temas strong{
 font-weight:600;
 display:block;
-font-size:1rem;
-line-height:1.5;
+font-size:.82rem;
+line-height:1.45;
+color:var(--green);
 }
 
 /* ─── Programa ─── */
@@ -402,18 +409,6 @@ top:30px;
 .programa-img img{
 border-radius:16px;
 box-shadow:var(--shadow);
-}
-.programa-img figcaption{
-margin-top:14px;
-text-align:center;
-font-family:Jost,sans-serif;
-font-size:.85rem;
-letter-spacing:.04em;
-color:var(--muted);
-}
-.programa-img a{
-color:var(--gold-text);
-border-bottom:1px solid rgba(179,139,77,.4);
 }
 .nota-programa{
 margin-top:40px;
@@ -568,7 +563,7 @@ grid-template-columns:1fr;
 margin-top:40px;
 }
 .temas ul{
-grid-template-columns:1fr;
+grid-template-columns:repeat(2,1fr);
 }
 section{
 padding:70px 0;
@@ -578,7 +573,7 @@ padding-bottom:calc(14px + env(safe-area-inset-bottom));
 }
 }
 </style>
-<!-- ══ EDITAR: URL de inscricao e URL absoluto do cartaz ══ -->
+<!-- ══ EDITAR: URL absoluto do site/cartaz ══ -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -613,7 +608,7 @@ padding-bottom:calc(14px + env(safe-area-inset-bottom));
     "price":"0",
     "priceCurrency":"EUR",
     "availability":"https://schema.org/InStock",
-    "url":"https://exemplo.pt/"
+    "url":"https://tally.so/r/b5XgM6"
   }
 }
 </script>
@@ -642,7 +637,6 @@ padding-bottom:calc(14px + env(safe-area-inset-bottom));
                     Da evidência à prática.<br>
                     Da intenção ao impacto.
                 </p>
-                <!-- ══ EDITAR: substituir o # pelo link do formulário de inscrição ══ -->
                 <a class="cta"
                    href="https://tally.so/r/b5XgM6"
                    target="_blank"
@@ -652,14 +646,13 @@ padding-bottom:calc(14px + env(safe-area-inset-bottom));
             </div>
             <figure class="hero-image">
                 <!-- ══ EDITAR: acrescentar width e height reais do cartaz (evita salto de layout) ══ -->
-                <a href="cartaz.jpeg" target="_blank" rel="noopener">
+                <a href="cartaz.jpeg" target="_blank" rel="noopener" title="Abrir o cartaz em tamanho real" aria-label="Abrir o cartaz em tamanho real numa nova janela">
                     <img
                         fetchpriority="high"
                         decoding="async"
                         src="cartaz.jpeg"
                         alt="Cartaz oficial das V Conversas em Medicina Intensiva">
                 </a>
-                <figcaption><a href="cartaz.jpeg" target="_blank" rel="noopener">Abrir cartaz em tamanho real</a></figcaption>
             </figure>
         </div>
     </div>
@@ -692,6 +685,32 @@ padding-bottom:calc(14px + env(safe-area-inset-bottom));
         </article>
     </div>
 </div>
+
+<section class="temas">
+    <div class="wrap">
+        <h2>Temas em destaque</h2>
+        <ul>
+            <li>
+                <strong>Antibiotic<br>Stewardship</strong>
+            </li>
+            <li>
+                <strong>High Value<br>Care</strong>
+            </li>
+            <li>
+                <strong>Ética e<br>Sustentabilidade</strong>
+            </li>
+            <li>
+                <strong>Sustentabilidade<br>Farmacológica</strong>
+            </li>
+            <li>
+                <strong>Sustentabilidade<br>Digital</strong>
+            </li>
+            <li>
+                <strong>Green ICU<br>Implementação</strong>
+            </li>
+        </ul>
+    </div>
+</section>
 
 <section class="programa">
     <div class="wrap">
@@ -806,39 +825,12 @@ padding-bottom:calc(14px + env(safe-area-inset-bottom));
         </li>
             </ol>
             <figure class="programa-img">
-                <a href="programa_preliminar.jpeg" target="_blank" rel="noopener">
+                <a href="programa_preliminar.jpeg" target="_blank" rel="noopener" title="Abrir o programa em tamanho real" aria-label="Abrir o programa preliminar em tamanho real numa nova janela">
                     <img src="programa_preliminar.jpeg" alt="Programa preliminar das V Conversas em Medicina Intensiva, 23 de outubro de 2026" loading="lazy" decoding="async">
                 </a>
-                <figcaption><a href="programa_preliminar.jpeg" target="_blank" rel="noopener">Abrir em tamanho real</a></figcaption>
             </figure>
         </div>
         <p class="nota-programa">Programa provisório. Horários e conteúdos sujeitos a alteração.</p>
-    </div>
-</section>
-
-<section class="temas">
-    <div class="wrap">
-        <h2>Temas em destaque</h2>
-        <ul>
-            <li>
-                <strong>Antibiotic<br>Stewardship</strong>
-            </li>
-            <li>
-                <strong>High Value<br>Care</strong>
-            </li>
-            <li>
-                <strong>Ética e<br>Sustentabilidade</strong>
-            </li>
-            <li>
-                <strong>Sustentabilidade<br>Farmacológica</strong>
-            </li>
-            <li>
-                <strong>Sustentabilidade<br>Digital</strong>
-            </li>
-            <li>
-                <strong>Green ICU<br>Implementação</strong>
-            </li>
-        </ul>
     </div>
 </section>
 
@@ -910,10 +902,9 @@ padding-bottom:calc(14px + env(safe-area-inset-bottom));
             <p>
                 Participação gratuita, sujeita à capacidade da sala.
             </p>
-            <!-- ══ EDITAR: substituir o # pelo link do formulário de inscrição ══ -->
             <a
                 class="footer-button"
-                href="#"
+                href="https://tally.so/r/b5XgM6"
                 target="_blank"
                 rel="noopener">
                 Inscrever →
@@ -932,9 +923,8 @@ padding-bottom:calc(14px + env(safe-area-inset-bottom));
                 23 Out 2026 · Ílhavo
             </small>
         </div>
-        <!-- ══ EDITAR: substituir o # pelo link do formulário de inscrição ══ -->
         <a
-            href="#"
+            href="https://tally.so/r/b5XgM6"
             class="cta">
             Inscrever →
         </a>
