@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<!-- ══════════ V2 — VERSÃO DE TESTE ══════════
-     data-logo aceita: "topbar", "card", "footer" (separados por espaço).
-     Ex.: data-logo="topbar footer"  ·  data-logo="" para nenhum.
-     ═══════════════════════════════════════════ -->
-<html lang="pt-PT" data-logo="topbar footer">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>V Conversas em Medicina Intensiva — 23 outubro 2026, Ílhavo</title>
+<title>V Conversas em Medicina Intensiva — 23 outubro 2026, Aveiro</title>
 <meta name="description" content="Sustentabilidade na Medicina Intensiva. Da evidência à prática, da intenção ao impacto. 23 de outubro de 2026, Montebelo Vista Alegre Ílhavo Hotel. Serviço de Medicina Intensiva, ULS Região de Aveiro.">
 <meta property="og:title" content="V Conversas em Medicina Intensiva">
 <meta property="og:description" content="Sustentabilidade na Medicina Intensiva — 23 outubro 2026, Montebelo Vista Alegre Ílhavo Hotel.">
@@ -575,105 +571,6 @@ padding:70px 0;
 padding-bottom:calc(14px + env(safe-area-inset-bottom));
 }
 }
-
-/* ══════════════════ V2 · LOGÓTIPOS (bloco isolado) ══════════════════ */
-
-/* Estado por defeito: tudo escondido; ativado por data-logo no <html> */
-.v-topbar{display:none}
-.card-logo{display:none}
-.footer-logos{display:none}
-
-html[data-logo~="topbar"] .v-topbar{display:block}
-html[data-logo~="topbar"] .org{display:none}      /* evita repetir o texto que os logos já dizem */
-html[data-logo~="card"] .card-logo{display:block}
-html[data-logo~="footer"] .footer-logos{display:flex}
-
-/* ── A · Faixa de co-branding no topo ── */
-.v-topbar{
-background:var(--white);
-border-bottom:1px solid rgba(179,139,77,.22);
-}
-.v-topbar .wrap{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:24px;
-padding-top:16px;
-padding-bottom:16px;
-}
-.v-topbar img{
-width:auto;
-height:auto;
-}
-.v-topbar .logo-uls{
-max-height:38px;
-}
-.v-topbar .logo-smi{
-max-height:52px;
-}
-
-/* ── B · Logótipo dentro do cartão "Organização" ── */
-.card-logo{
-max-height:54px;
-width:auto;
-margin-bottom:16px;
-}
-
-/* ── C · Logótipos no rodapé (chip branco: o azul-escuro do logo
-        não tem contraste suficiente sobre o verde) ── */
-.footer-logos{
-gap:14px;
-flex-wrap:wrap;
-align-items:center;
-margin-top:26px;
-}
-.footer-logos span{
-background:var(--white);
-border-radius:10px;
-padding:10px 14px;
-display:inline-flex;
-align-items:center;
-}
-.footer-logos .logo-uls{
-max-height:30px;
-width:auto;
-}
-.footer-logos .logo-smi{
-max-height:42px;
-width:auto;
-}
-
-@media(max-width:900px){
-.v-topbar .wrap{
-gap:16px;
-padding-top:12px;
-padding-bottom:12px;
-}
-.v-topbar .logo-uls{max-height:26px}
-.v-topbar .logo-smi{max-height:38px}
-}
-@media(max-width:420px){
-.v-topbar .wrap{flex-direction:column;align-items:flex-start;gap:10px}
-}
-
-/* ── Painel de teste — APAGAR ANTES DE PUBLICAR ── */
-.v-switch{
-position:fixed;top:12px;right:12px;z-index:2000;
-background:rgba(23,51,45,.94);color:#fff;
-font:600 12px/1.5 Jost,sans-serif;
-padding:12px 14px;border-radius:10px;
-box-shadow:0 8px 24px rgba(0,0,0,.25);
-backdrop-filter:blur(6px);
-}
-.v-switch b{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
-.v-switch label{display:flex;gap:8px;align-items:center;cursor:pointer;padding:2px 0}
-.v-switch button{
-margin-top:8px;width:100%;cursor:pointer;
-background:none;border:1px solid rgba(255,255,255,.35);color:#fff;
-font:600 10px/1 Jost,sans-serif;letter-spacing:.1em;text-transform:uppercase;
-padding:7px;border-radius:5px;
-}
-/* ════════════════ fim do bloco V2 ════════════════ */
 </style>
 <script type="application/ld+json">
 {
@@ -701,7 +598,7 @@ padding:7px;border-radius:5px;
   },
   "organizer":{
     "@type":"Organization",
-    "name":"Serviço de Medicina Intensiva — Unidade Local de Saúde Região de Aveiro",
+    "name":"Serviço de Medicina Intensiva — Unidade Local de Saúde da Região de Aveiro",
     "url":"https://vconversasmedicinaintensiva-ctrl.github.io/Conversas-landing-page/"
   },
   "offers":{
@@ -715,16 +612,6 @@ padding:7px;border-radius:5px;
 </script>
 </head>
 <body>
-
-<!-- ══ V2 · A · faixa de co-branding ══ -->
-<div class="v-topbar">
-    <div class="wrap">
-        <img class="logo-uls" src="logo-uls.png" width="600" height="102"
-             alt="Unidade Local de Saúde Região de Aveiro">
-        <img class="logo-smi" src="logo-smi.png" width="600" height="316"
-             alt="Serviço de Medicina Intensiva — ULS Região de Aveiro">
-    </div>
-</div>
 
 <header>
     <div class="wrap">
@@ -787,9 +674,6 @@ padding:7px;border-radius:5px;
         </article>
         <article class="card">
             <small>Organização</small>
-            <!-- ══ V2 · B · logo no cartão ══ -->
-            <img class="card-logo" src="logo-smi.png" width="600" height="316"
-                 alt="" loading="lazy" decoding="async">
             <h3>
                 Serviço de Medicina Intensiva
             </h3>
@@ -1012,15 +896,8 @@ padding:7px;border-radius:5px;
                 Serviço de Medicina Intensiva
             </p>
             <p>
-                Unidade Local de Saúde Região de Aveiro
+                Unidade Local de Saúde da Região de Aveiro
             </p>
-            <!-- ══ V2 · C · logos no rodapé ══ -->
-            <div class="footer-logos">
-                <span><img class="logo-uls" src="logo-uls.png" width="600" height="102"
-                           alt="" loading="lazy" decoding="async"></span>
-                <span><img class="logo-smi" src="logo-smi.png" width="600" height="316"
-                           alt="" loading="lazy" decoding="async"></span>
-            </div>
         </div>
         <div>
             <h4>Contacto</h4>
@@ -1066,32 +943,6 @@ padding:7px;border-radius:5px;
         </a>
     </div>
 </div>
-
-<!-- ══════════ PAINEL DE TESTE — APAGAR ANTES DE PUBLICAR ══════════ -->
-<div class="v-switch" id="vSwitch">
-    <b>Testar logo</b>
-    <label><input type="checkbox" value="topbar" checked> A · Faixa no topo</label>
-    <label><input type="checkbox" value="card"> B · Cartão Organização</label>
-    <label><input type="checkbox" value="footer" checked> C · Rodapé</label>
-    <button type="button" id="vHide">Esconder painel</button>
-</div>
-<script>
-(function(){
-    var p = document.getElementById('vSwitch');
-    var boxes = p.querySelectorAll('input');
-    function apply(){
-        var on = [];
-        boxes.forEach(function(b){ if(b.checked) on.push(b.value); });
-        document.documentElement.setAttribute('data-logo', on.join(' '));
-    }
-    boxes.forEach(function(b){ b.addEventListener('change', apply); });
-    document.getElementById('vHide').addEventListener('click', function(){
-        p.style.display = 'none';
-    });
-    apply();
-})();
-</script>
-<!-- ══════════ fim do painel de teste ══════════ -->
 
 </body>
 </html>
