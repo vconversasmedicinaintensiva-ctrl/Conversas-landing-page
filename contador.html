@@ -196,6 +196,59 @@ color: var(--muted);
 color: #8A3B32;
 }
 
+.links {
+position: relative;
+z-index: 1;
+
+display: flex;
+justify-content: center;
+gap: 14px;
+
+margin-top: 35px;
+}
+
+.links a {
+display: inline-block;
+
+padding: 11px 22px;
+
+border: 1px solid var(--gold);
+
+font-family: "Jost", sans-serif;
+font-size: 12px;
+font-weight: 600;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+
+text-decoration: none;
+
+color: var(--green);
+background: transparent;
+
+transition:
+background-color 0.2s ease,
+color 0.2s ease;
+}
+
+.links a:hover {
+background: var(--green);
+color: var(--white);
+}
+
+@media (max-width: 600px) {
+
+.links {
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+
+.links a {
+width: min(240px, 80vw);
+}
+
+}
+  
 @media (max-width: 600px) {
 
 .page {
@@ -255,6 +308,24 @@ A atualizar…
 </div>
 
 </section>
+
+<div class="links">
+
+<a
+href="https://tally.so/r/b5XgM6"
+target="_blank"
+rel="noopener">
+Inscrições
+</a>
+
+<a
+href="https://vconversasmedicinaintensiva-ctrl.github.io/Conversas-landing-page/"
+target="_blank"
+rel="noopener">
+Página do evento
+</a>
+
+</div>
 
 <div class="footer">
 Serviço de Medicina Intensiva · ULS Região de Aveiro
