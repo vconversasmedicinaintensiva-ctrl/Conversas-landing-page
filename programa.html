@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programa · V Conversas em Medicina Intensiva</title>
+<meta name="description" content="Programa da V Conversas em Medicina Intensiva · 23 de outubro de 2026 · Ílhavo.">
+<meta name="theme-color" content="#FAF7F2">
+<link rel="canonical" href="https://vconversasmedicinaintensiva-ctrl.github.io/Conversas-landing-page/programa.html">
+<meta property="og:title" content="Programa · V Conversas em Medicina Intensiva">
+<meta property="og:description" content="23 de outubro de 2026 · Ílhavo">
+<meta property="og:image" content="https://vconversasmedicinaintensiva-ctrl.github.io/Conversas-landing-page/cartaz.jpeg">
+<meta property="og:locale" content="pt_PT">
+<style>
+  :root{
+    --bg:#FAF7F2; --ink:#0B3B2E; --gold:#B8863B; --muted:#5b6b64; --line:#e3dccf;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+  header{padding:28px 20px 8px;text-align:center}
+  header h1{margin:0;font-size:clamp(1.5rem,5vw,2.4rem);letter-spacing:.01em}
+  header p{margin:6px 0 0;color:var(--gold);font-style:italic;font-family:Georgia,serif;font-size:1.05rem}
+  .meta{margin-top:10px;color:var(--muted);font-size:.95rem}
+  main{max-width:960px;margin:0 auto;padding:16px 16px 40px}
+  .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:18px 0}
+  .btn{display:inline-block;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:600;
+    border:2px solid var(--ink);color:var(--ink);background:transparent}
+  .btn.primary{background:var(--ink);color:#fff}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .viewer{max-width:860px;margin:0 auto}
+  .viewer canvas{display:block;width:100%;height:auto;margin:0 0 14px;background:#fff;
+    border:1px solid var(--line);border-radius:8px;box-shadow:0 2px 10px rgba(11,59,46,.08)}
+  .status{padding:40px 20px;text-align:center;color:var(--muted)}
+  .back{text-align:center;margin-top:22px}
+  .back a{color:var(--ink)}
+  footer{border-top:1px solid var(--line);padding:22px 16px 30px;text-align:center}
+  footer .logos{display:flex;gap:28px;justify-content:center;align-items:center;flex-wrap:wrap}
+  footer img{height:48px;width:auto}
+  footer small{display:block;margin-top:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <h1>V Conversas em Medicina Intensiva</h1>
+  <p>Sustentabilidade na Medicina Intensiva</p>
+  <div class="meta">23 de outubro de 2026 · Ílhavo</div>
+</header>
+
+<main>
+  <h2 style="text-align:center;margin:18px 0 0;font-size:1.2rem">Programa</h2>
+
+  <div class="actions">
+    <a class="btn primary" href="assets/programa.pdf" target="_blank" rel="noopener">Abrir programa (PDF)</a>
+    <a class="btn" href="assets/programa.pdf" download>Descarregar</a>
+  </div>
+
+  <div class="viewer" id="viewer"><div class="status" id="status">A carregar o programa…</div></div>
+
+  <noscript><p class="status">Ative o JavaScript ou use o botão «Abrir programa (PDF)».</p></noscript>
+
+  <p class="back"><a href="https://vconversasmedicinaintensiva-ctrl.github.io/Conversas-landing-page/">Página do evento e inscrições</a></p>
+</main>
+
+<footer>
+  <div class="logos">
+    <img src="logo-uls.png" alt="Unidade Local de Saúde Região de Aveiro">
+    <img src="logo-smi.png" alt="Serviço de Medicina Intensiva">
+  </div>
+  <small>Programa sujeito a alterações · vconversasmedicinaintensiva@gmail.com</small>
+</footer>
+<script type="module">
+  const PDF = "assets/programa.pdf";
+  const box = document.getElementById("viewer");
+  const status = document.getElementById("status");
+  try {
+    const lib = await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs");
+    lib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
+    const pdf = await lib.getDocument(PDF).promise;
+    status.remove();
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const vp = page.getViewport({ scale: (860 * dpr) / page.getViewport({ scale: 1 }).width });
+      const c = document.createElement("canvas");
+      c.width = vp.width; c.height = vp.height;
+      c.setAttribute("role", "img");
+      c.setAttribute("aria-label", "Programa, página " + i + " de " + pdf.numPages);
+      box.appendChild(c);
+      await page.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise;
+    }
+  } catch (e) {
+    // Sem pdf.js (offline, file:// ou bloqueio): mostra a imagem do programa; se faltar, tenta o PDF embebido
+    const img = new Image();
+    img.alt = "Programa da V Conversas em Medicina Intensiva";
+    img.style.cssText = "display:block;width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:8px";
+    img.onload = () => { box.replaceChildren(img); };
+    img.onerror = () => {
+      const o = document.createElement("object");
+      o.data = PDF; o.type = "application/pdf";
+      o.style.cssText = "width:100%;height:80vh;min-height:480px";
+      o.innerHTML = '<div class="status">Não foi possível mostrar o programa aqui. <a href="' + PDF + '">Abrir o PDF</a>.</div>';
+      box.replaceChildren(o);
+    };
+    img.src = "assets/programa.jpg";
+  }
+</script>
+</body>
+</html>
